@@ -112,7 +112,7 @@
                 </h1>
 
                 <p class="text-slate-300 text-sm md:text-base leading-relaxed max-w-xl mx-auto md:mx-0">
-                    Protección, comodidad para el clima de Yucatán y la mejor imagen para tu equipo de trabajo. Personalizamos</strong>.
+                    Protección, comodidad para el clima de Yucatán y la mejor imagen para tu equipo de trabajo. ¡SÓLO UN PRECIO en manga corta o larga! Gran variedad de colores además de los básicos: amarillo, rosa y naranja. Puedes pedir otros colores desde 2 piezas, sujeto a disponibilidad en fábrica.</strong>.
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3">
@@ -173,6 +173,8 @@
         <div class="text-center max-w-2xl mx-auto mb-8">
             <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Modelos Disponibles</h2>
             <p class="text-slate-400 text-sm">Selecciona el estilo que necesitas para tu personal.</p>
+            <p class="text-slate-400 text-sm">Importante: Los tonos pueden variar ligeramente, especialmente en rosa, por temas de fábrica.</p>
+            <p class="text-slate-400 text-sm">Por ahora contamos con playeras de algodón solo en color rosa. ¡Diseñamos el modelo que tengas en mente! Según el material disponible.</p>
         </div>
 
         <!-- CATEGORY FILTERS -->
@@ -237,15 +239,36 @@
                         </div>
                     </div>
 
-                    <!-- 3. SIZES & QUANTITIES -->
+                    <!-- 3. SLEEVE OPTION -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                            3. Tipo de Manga
+                        </label>
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <label class="flex items-center gap-3 bg-slate-800 p-3 rounded-xl border border-slate-700 cursor-pointer hover:border-slate-600">
+                                <input type="radio" name="sleeveType" value="Manga corta" checked class="w-4 h-4 text-hivis-neon bg-slate-900 border-slate-600 focus:ring-0">
+                                <span class="text-sm font-semibold text-slate-200">Manga corta</span>
+                            </label>
+                            <label class="flex items-center gap-3 bg-slate-800 p-3 rounded-xl border border-slate-700 cursor-pointer hover:border-slate-600">
+                                <input type="radio" name="sleeveType" value="Manga larga" class="w-4 h-4 text-hivis-neon bg-slate-900 border-slate-600 focus:ring-0">
+                                <span class="text-sm font-semibold text-slate-200">Manga larga</span>
+                            </label>
+                        </div>
+                        <label class="flex items-center gap-3 bg-slate-800 p-3 mt-3 rounded-xl border border-slate-700 cursor-pointer hover:border-slate-600">
+                            <input type="checkbox" id="extraCapucha" onchange="calculateTotalQty()" class="w-4 h-4 text-hivis-neon rounded bg-slate-900 border-slate-600 focus:ring-0">
+                            <span class="text-sm font-semibold text-slate-200">Capucha / Pasamontañas + $60</span>
+                        </label>
+                    </div>
+
+                    <!-- 4. SIZES & QUANTITIES -->
                     <div>
                         <div class="flex items-center justify-between mb-2">
                             <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
-                                3. Cantidades por Talla
+                                4. Cantidades por Talla
                             </label>
                             <span class="text-xs text-slate-400">Total Piezas: <strong id="totalQtyDisplay" class="text-hivis-neon text-sm">0</strong></span>
                         </div>
-                        <div class="grid grid-cols-3 sm:grid-cols-5 gap-3 bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 bg-slate-800/80 p-4 rounded-xl border border-slate-700">
                             <div>
                                 <label class="block text-xs text-center font-bold text-slate-400 mb-1">Chica (S)</label>
                                 <input type="number" min="0" value="0" id="size_S" oninput="calculateTotalQty()" class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 text-center text-white text-sm font-bold focus:border-hivis-neon focus:outline-none">
@@ -259,21 +282,25 @@
                                 <input type="number" min="0" value="0" id="size_L" oninput="calculateTotalQty()" class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 text-center text-white text-sm font-bold focus:border-hivis-neon focus:outline-none">
                             </div>
                             <div>
-                                <label class="block text-xs text-center font-bold text-slate-400 mb-1">X-Grande (XL)</label>
-                                <input type="number" min="0" value="0" id="size_XL" oninput="calculateTotalQty()" class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 text-center text-white text-sm font-bold focus:border-hivis-neon focus:outline-none">
+                                <label class="block text-xs text-center font-bold text-slate-400 mb-1">Extra Grande (XG) + $35</label>
+                                <input type="number" min="0" value="0" id="size_XG" oninput="calculateTotalQty()" class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 text-center text-white text-sm font-bold focus:border-hivis-neon focus:outline-none">
                             </div>
-                            <div class="col-span-3 sm:col-span-1">
-                                <label class="block text-xs text-center font-bold text-slate-400 mb-1">2XL / 3XL</label>
-                                <input type="number" min="0" value="0" id="size_2XL" oninput="calculateTotalQty()" class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 text-center text-white text-sm font-bold focus:border-hivis-neon focus:outline-none">
+                            <div>
+                                <label class="block text-xs text-center font-bold text-slate-400 mb-1">XXG + $70</label>
+                                <input type="number" min="0" value="0" id="size_XXG" oninput="calculateTotalQty()" class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 text-center text-white text-sm font-bold focus:border-hivis-neon focus:outline-none">
                             </div>
                         </div>
+                        <label class="flex items-center gap-3 bg-slate-800 p-3 rounded-xl border border-slate-700 cursor-pointer hover:border-slate-600">
+                            <input type="checkbox" id="extraCinta" onchange="calculateTotalQty()" class="w-4 h-4 text-hivis-neon rounded bg-slate-900 border-slate-600 focus:ring-0">
+                            <span class="text-sm font-semibold text-slate-200">Cinta + $95</span>
+                        </label>
                     </div>
 
-                    <!-- 4. ADD EXTRA PRODUCT TO ORDER -->
+                    <!-- 5. ADD EXTRA PRODUCT TO ORDER -->
                     <div class="space-y-3">
                         <div class="flex items-center justify-between gap-3">
                             <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
-                                4. Agregar Otro Producto al Pedido
+                                5. Agregar Otro Producto al Pedido
                             </label>
                             <div class="flex items-center gap-2">
                                 <button type="button" onclick="addSelectedProductToOrder()" class="px-3 py-2 rounded-xl bg-hivis-neon text-slate-950 text-xs font-bold hover:bg-yellow-300 transition-all">
@@ -287,15 +314,15 @@
                         <div id="orderItemsList" class="space-y-2"></div>
                     </div>
 
-                    <!-- 5. CLIENT DATA & NOTES -->
+                    <!-- 6. CLIENT DATA & NOTES -->
                     <div class="space-y-3">
                         <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
-                            5. Datos del Cliente y Detalles
+                            6. Datos del Cliente y Detalles
                         </label>
                         <div class="grid sm:grid-cols-1 gap-3">
                             <input type="text" id="clientName" required placeholder="Tu Nombre o Empresa *" class="bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-hivis-neon">
                         </div>
-                        <textarea id="orderNotes" rows="3" placeholder="Notas sobre ubicación de logos, nombres requeridos o dudas especiales..." class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-white text-sm focus:outline-none focus:border-hivis-neon"></textarea>
+                        <textarea id="orderNotes" rows="3" placeholder="Cualquier solicitud adicional o dudas aquí" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-white text-sm focus:outline-none focus:border-hivis-neon"></textarea>
                     </div>
 
                     <!-- LIVE ORDER RECAP CARD -->
@@ -400,8 +427,8 @@
         const products = [
             {
                 id: 'MOD-HV100',
-                title: 'Manga Larga Reflejante',
-                category: 'reflejante',
+                title: 'Playera con Reflejante',
+                category: 'Playera con reflejante',
                 badge: 'Reflejante',
                 image: 'https://plus.unsplash.com/premium_photo-1681989486976-9ec9d2eac57a?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
                 desc: 'Manga larga fresca con doble cinta reflejante horizontal de 2 pulgadas en torso y brazos. Ideal para obras al aire libre.',
@@ -414,9 +441,9 @@
             },
             {
                 id: 'MOD-HV101',
-                title: 'Manga Corta Reflejante',
-                category: 'manga-corta',
-                badge: 'Manga Corta',
+                title: 'Playera Reflejante + Gafete',
+                category: 'Playera con reflejante y gafete',
+                badge: 'reflejante + Gafete',
                 image: 'images/img1.jpg',
                 desc: 'Elegante y fresca. Cuello con botones y cintas reflejantes pecheras. Perfecta para supervisores y personal técnico.',
                 colors: [
@@ -428,9 +455,9 @@
             },
             {
                 id: 'MOD-HV200',
-                title: 'Bicolor',
-                category: 'bicolor',
-                badge: 'Bicolor',
+                title: 'Sencilla',
+                category: 'Sencilla',
+                badge: 'Sencilla',
                 image: 'https://plus.unsplash.com/premium_photo-1681989499439-6bbe133f4556?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
                 desc: 'Combina azul marino en zonas de roce (cuello e inferior) con neón reflejante superior para ocultar manchas de trabajo.',
                 colors: [
@@ -441,9 +468,9 @@
             },
             {
                 id: 'MOD-HV201',
-                title: 'Bicolor Reflejante',
-                category: 'Bicolor Reflejante',
-                badge: 'Bicolor Reflejante',
+                title: 'Capucha - Pasamontañas',
+                category: 'Capucha - Pasamontañas',
+                badge: 'Capucha - Pasamontañas',
                 image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80',
                 desc: 'Tela duradera con dos bolsas en pecho con cartera. Cintas reflejantes cruzadas en espalda para máxima protección.',
                 colors: [
@@ -455,9 +482,9 @@
             },
             {
                 id: 'MOD-HV300',
-                title: 'Manga Corta sin reflejante',
-                category: 'sin-reflejante',
-                badge: 'Manga Corta',
+                title: 'Thermoadherible',
+                category: 'Thermoadherible',
+                badge: 'Thermoadherible',
                 image: 'https://plus.unsplash.com/premium_photo-1682617326577-b63d6997c007?q=80&w=1033&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
                 desc: 'Microfibra transpirable de secado rápido. Diseñada especialmente para el clima húmedo y caluroso de Mérida.',
                 colors: [
@@ -468,9 +495,22 @@
             },
             {
                 id: 'MOD-HV301',
-                title: 'Manga Larga Sin Reflejante',
-                category: 'sin-reflejante',
-                badge: 'Manga Larga Sin Reflejante',
+                title: 'Polo',
+                category: 'Polo',
+                badge: 'Polo',
+                image: 'https://media.istockphoto.com/id/2297504318/photo/colorful-workwear-including-high-visibility-safety-vests-and-t-shirts-in-a-closet.jpg?s=612x612&w=is&k=20&c=7wACIH4Su6iNY_uAcy6ML6bsL3XF8ro3m-0EHHjgCF8=',
+                desc: 'Chaleco de mallas ligeras sobrepuesto, cierre frontal y multi-bolsillo para identificación y plumas.',
+                colors: [
+                    { name: 'Amarillo Neón', hex: '#CCFF00' },
+                    { name: 'Naranja Neón', hex: '#FF6B00' }
+                ],
+                sizes: ['M', 'L', 'XL', '2XL']
+            },
+            {
+                id: 'MOD-HV400',
+                title: '2 Colores Reflejante',
+                category: '2 Colores Reflejante',
+                badge: '2 Colores Reflejante',
                 image: 'https://media.istockphoto.com/id/2297504318/photo/colorful-workwear-including-high-visibility-safety-vests-and-t-shirts-in-a-closet.jpg?s=612x612&w=is&k=20&c=7wACIH4Su6iNY_uAcy6ML6bsL3XF8ro3m-0EHHjgCF8=',
                 desc: 'Chaleco de mallas ligeras sobrepuesto, cierre frontal y multi-bolsillo para identificación y plumas.',
                 colors: [
@@ -480,7 +520,6 @@
                 sizes: ['M', 'L', 'XL', '2XL']
             }
         ];
-
         let selectedModel = products[0];
         let selectedColor = products[0].colors[0].name;
         let orderItems = [];
@@ -604,14 +643,27 @@
             updateRecap();
         }
 
+        function getCurrentSleeveType() {
+            const selected = document.querySelector('input[name="sleeveType"]:checked');
+            return selected ? selected.value : 'Manga corta';
+        }
+
+        function resetSleeveSelection() {
+            const defaultOption = document.querySelector('input[name="sleeveType"][value="Manga corta"]');
+            if (defaultOption) defaultOption.checked = true;
+        }
+
         function getCurrentQtyValues() {
             const s = parseInt(document.getElementById('size_S').value) || 0;
             const m = parseInt(document.getElementById('size_M').value) || 0;
             const l = parseInt(document.getElementById('size_L').value) || 0;
-            const xl = parseInt(document.getElementById('size_XL').value) || 0;
-            const xxl = parseInt(document.getElementById('size_2XL').value) || 0;
-            const total = s + m + l + xl + xxl;
-            return { s, m, l, xl, xxl, total };
+            const xg = parseInt(document.getElementById('size_XG').value) || 0;
+            const xxg = parseInt(document.getElementById('size_XXG').value) || 0;
+            const cinta = document.getElementById('extraCinta').checked;
+            const capucha = document.getElementById('extraCapucha').checked;
+            const sleeve = getCurrentSleeveType();
+            const total = s + m + l + xg + xxg;
+            return { s, m, l, xg, xxg, total, cinta, capucha, sleeve };
         }
 
         // CALCULATE TOTAL QUANTITY
@@ -626,8 +678,11 @@
             document.getElementById('size_S').value = 0;
             document.getElementById('size_M').value = 0;
             document.getElementById('size_L').value = 0;
-            document.getElementById('size_XL').value = 0;
-            document.getElementById('size_2XL').value = 0;
+            document.getElementById('size_XG').value = 0;
+            document.getElementById('size_XXG').value = 0;
+            document.getElementById('extraCinta').checked = false;
+            document.getElementById('extraCapucha').checked = false;
+            resetSleeveSelection();
             calculateTotalQty();
         }
 
@@ -668,8 +723,8 @@
                 { label: 'S', value: item.s },
                 { label: 'M', value: item.m },
                 { label: 'L', value: item.l },
-                { label: 'XL', value: item.xl },
-                { label: '2XL', value: item.xxl }
+                { label: 'XG', value: item.xg },
+                { label: 'XXG', value: item.xxg }
             ];
 
             const activeSizes = sizes.filter(size => size.value > 0);
@@ -708,7 +763,10 @@
                     </div>
                     <div class="text-[11px] text-slate-300">
                         <span class="font-semibold">Color:</span> ${item.color}<br>
+                        <span class="font-semibold">Manga:</span> ${item.sleeve || 'Manga corta'}<br>
+                        ${item.capucha ? '<span class="font-semibold">Capucha:</span> Sí<br>' : ''}
                         <span class="font-semibold">Tallas:</span> ${formatOrderedSizes(item)} <span class="text-hivis-neon">(${item.total} pzas)</span>
+                        ${item.cinta ? '<br><span class="font-semibold">Extras:</span> Cinta + $95' : ''}
                     </div>
                 </div>
             `).join('');
@@ -732,9 +790,14 @@
 
             recapBox.innerHTML = `
                 <div>• <strong>Productos agregados:</strong> ${orderItems.length}</div>
-                ${orderItems.map(item => `
-                    <div>• ${item.id} - ${item.title} (${item.color}) • ${item.total} pzas</div>
-                `).join('')}
+                ${orderItems.map(item => {
+                    const extras = [];
+                    if (item.xg > 0) extras.push('XG + $35');
+                    if (item.xxg > 0) extras.push('XXG + $70');
+                    if (item.cinta) extras.push('Cinta + $95');
+                    if (item.capucha) extras.push('Capucha / Pasamontañas + $60');
+                    return `<div>• ${item.id} - ${item.title} (${item.color}) • ${item.sleeve || 'Manga corta'} • ${item.total} pzas${extras.length ? ` • Extras: ${extras.join(' | ')}` : ''}</div>`;
+                }).join('')}
                 <div>• <strong>Total General:</strong> ${activeTotal} pzas</div>
             `;
         }
@@ -767,6 +830,10 @@
             }
 
             const totalItems = orderItems.reduce((sum, item) => sum + item.total, 0);
+            const extraTotal = orderItems.reduce((sum, item) => {
+                const extra = (item.xg * 35) + (item.xxg * 70) + (item.cinta ? 95 : 0) + (item.capucha ? 60 : 0);
+                return sum + extra;
+            }, 0);
 
             // Construct WhatsApp Message
             let msg = `*NUEVO PEDIDO / SOLICITUD DE COTIZACIÓN*\n`;
@@ -778,16 +845,26 @@
                     { label: 'S', value: item.s },
                     { label: 'M', value: item.m },
                     { label: 'L', value: item.l },
-                    { label: 'XL', value: item.xl },
-                    { label: '2XL', value: item.xxl }
+                    { label: 'XG', value: item.xg },
+                    { label: 'XXG', value: item.xxg }
                 ].filter(size => size.value > 0);
                 const sizesText = activeSizes.map(size => `${size.label}:${size.value}`).join(' | ');
+                const extras = [];
+                if (item.xg > 0) extras.push('XG + $35');
+                if (item.xxg > 0) extras.push('XXG + $70');
+                if (item.cinta) extras.push('Cinta + $95');
+                if (item.capucha) extras.push('Capucha / Pasamontañas + $60');
 
                 msg += `${index + 1}. *${item.id} - ${item.title}*\n`;
                 msg += `   • Color: ${item.color}\n`;
-                msg += `   • Tallas: ${sizesText}\n\n`;
+                msg += `   • Manga: ${item.sleeve || 'Manga corta'}\n`;
+                if (item.capucha) msg += `   • Capucha / Pasamontañas: Sí\n`;
+                msg += `   • Tallas: ${sizesText}\n`;
+                if (extras.length) msg += `   • Extras: ${extras.join(' | ')}\n`;
+                msg += `\n`;
             });
             msg += `📦 *Total de Piezas:* ${totalItems}\n`;
+            if (extraTotal > 0) msg += `💰 *Cobro extra por tallas/cinta:* $${extraTotal}\n`;
             if (notes) msg += `\n📝 *Notas Adicionales:*\n"${notes}"\n`;
             msg += `------------------------------------\n`;
             msg += `Enviado desde el sitio web Playeras AV.`;

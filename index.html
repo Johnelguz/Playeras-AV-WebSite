@@ -290,7 +290,7 @@
                                 <input type="number" min="0" value="0" id="size_XXG" oninput="calculateTotalQty()" class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 text-center text-white text-sm font-bold focus:border-hivis-neon focus:outline-none">
                             </div>
                         </div>
-                        <label class="flex items-center gap-3 bg-slate-800 p-3 rounded-xl border border-slate-700 cursor-pointer hover:border-slate-600">
+                        <label id="extraCintaWrap" class="flex items-center gap-3 bg-slate-800 p-3 rounded-xl border border-slate-700 cursor-pointer hover:border-slate-600">
                             <input type="checkbox" id="extraCinta" onchange="calculateTotalQty()" class="w-4 h-4 text-hivis-neon rounded bg-slate-900 border-slate-600 focus:ring-0">
                             <span class="text-sm font-semibold text-slate-200">Cinta + $95</span>
                         </label>
@@ -656,6 +656,7 @@
                 swatchContainer.appendChild(btn);
             });
 
+            syncExtraCintaAvailability();
             updateRecap();
         }
 
@@ -678,13 +679,34 @@
             if (defaultOption) defaultOption.checked = true;
         }
 
+        function isThermoadheribleModel(model = selectedModel) {
+            const title = model?.title || '';
+            return title.toLowerCase().includes('thermoadherible');
+        }
+
+        function syncExtraCintaAvailability() {
+            const checkbox = document.getElementById('extraCinta');
+            const wrapper = document.getElementById('extraCintaWrap');
+            if (!checkbox || !wrapper) return;
+
+            const isAvailable = isThermoadheribleModel();
+            checkbox.disabled = !isAvailable;
+            wrapper.classList.toggle('hidden', !isAvailable);
+            wrapper.classList.toggle('opacity-50', !isAvailable);
+            wrapper.classList.toggle('cursor-not-allowed', !isAvailable);
+
+            if (!isAvailable) {
+                checkbox.checked = false;
+            }
+        }
+
         function getCurrentQtyValues() {
             const s = parseInt(document.getElementById('size_S').value) || 0;
             const m = parseInt(document.getElementById('size_M').value) || 0;
             const l = parseInt(document.getElementById('size_L').value) || 0;
             const xg = parseInt(document.getElementById('size_XG').value) || 0;
             const xxg = parseInt(document.getElementById('size_XXG').value) || 0;
-            const cinta = document.getElementById('extraCinta').checked;
+            const cinta = isThermoadheribleModel() && document.getElementById('extraCinta').checked;
             const capucha = document.getElementById('extraCapucha').checked;
             const sleeve = getCurrentSleeveType();
             const total = s + m + l + xg + xxg;

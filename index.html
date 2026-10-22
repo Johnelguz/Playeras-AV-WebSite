@@ -82,7 +82,7 @@
                 <a href="#ventajas" class="hover:text-hivis-neon transition-colors">Personalización</a>
             </div>
 
-            <a href="https://api.whatsapp.com/send?text=Hola,%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20camisas%20de%20alta%20visibilidad." 
+            <a href="https://wa.me/529999909284?text=Hola,%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20camisas%20de%20alta%20visibilidad." 
                target="_blank"
                class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-4 py-2 rounded-xl text-xs md:text-sm flex items-center gap-2 transition-transform active:scale-95 shadow-lg shadow-emerald-500/20">
                 <i class="fa-brands fa-whatsapp text-lg">
@@ -385,7 +385,7 @@
             </i>
             <span>Pedir / Cotizar</span>
         </a>
-        <a href="https://api.whatsapp.com/send?text=Hola,%20me%20gustar%C3%ADa%20hacer%20una%20consulta" 
+        <a href="https://wa.me/529999909284?text=Hola,%20me%20gustar%C3%ADa%20hacer%20una%20consulta" 
            target="_blank" 
            class="flex flex-col items-center text-emerald-400 font-bold text-xs">
             <i class="fa-brands fa-whatsapp text-base mb-0.5">
@@ -792,8 +792,9 @@
             msg += `------------------------------------\n`;
             msg += `Enviado desde el sitio web Playeras AV.`;
 
-            // Open WhatsApp without exposing the phone number in the URL
-            const encodedUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`;
+            // Open WhatsApp directly to the business number with the order text
+            const phone = "529999909284";
+            const encodedUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
 
             // Open WhatsApp
             window.open(encodedUrl, '_blank');

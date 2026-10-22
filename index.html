@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playeras AV | Camisas de Alta Visibilidad y Playeras</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hivis: {
+                            yellow: '#D4E157',
+                            neon: '#CCFF00',
+                            orange: '#FF6B00',
+                            navy: '#0A192F',
+                            dark: '#0F172A',
+                            accent: '#22C55E'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hi-vis-glow {
+            box-shadow: 0 0 15px rgba(204, 255, 0, 0.3);
+        }
+        .reflective-tape {
+            background: linear-gradient(90deg, #e2e8f0 0%, #ffffff 50%, #e2e8f0 100%);
+            border-top: 2px solid #cbd5e1;
+            border-bottom: 2px solid #cbd5e1;
+        }
+        /* Custom scrollbar for horizontal size pickers */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans antialiased min-h-screen flex flex-col pb-20 md:pb-0">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-amber-400 text-slate-950 px-4 py-2 text-xs md:text-sm font-bold text-center flex items-center justify-center gap-2 shadow-md">
+        <i class="fa-solid fa-truck-fast">
+        </i>
+        <span>Envíos en Mérida | Atención rápida por WhatsApp</span>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2">
+                <div class="w-9 h-9 rounded-lg bg-hivis-neon text-slate-950 font-black flex items-center justify-center text-xl shadow-md">
+                    <i class="fa-solid fa-vest">
+                    </i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-white block leading-none">Playeras <span class="text-hivis-neon">AV</span></span>
+                    <span class="text-[10px] text-slate-400 tracking-wider uppercase font-semibold">Mérida • Uniformes</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center gap-6 text-sm font-semibold">
+                <a href="#catalogo" class="hover:text-hivis-neon transition-colors">Catálogo</a>
+                <a href="#cotizador" class="hover:text-hivis-neon transition-colors">Hacer Pedido</a>
+                <a href="#ventajas" class="hover:text-hivis-neon transition-colors">Personalización</a>
+            </div>
+
+            <a href="https://wa.me/529991234567?text=Hola,%20quisiera%20más%20información%20sobre%20las%20camisas%20de%20alta%20visibilidad." 
+               target="_blank"
+               class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-4 py-2 rounded-xl text-xs md:text-sm flex items-center gap-2 transition-transform active:scale-95 shadow-lg shadow-emerald-500/20">
+                <i class="fa-brands fa-whatsapp text-lg">
+                </i>
+                <span class="hidden sm:inline">Contactar</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 py-12 md:py-20 border-b border-slate-800">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-hivis-neon/10 rounded-full blur-3xl pointer-events-none">
+        </div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none">
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-6 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-full text-xs font-semibold text-hivis-neon">
+                    <span class="w-2 h-2 rounded-full bg-hivis-neon animate-pulse">
+                    </span>
+                    Taller Directo en Mérida, Yucatán
+                </div>
+
+                <h1 class="text-3xl md:text-5xl font-black text-white leading-tight">
+                    Camisas de <span class="text-hivis-neon">Alta Visibilidad</span> y Uniformes Industriales
+                </h1>
+
+                <p class="text-slate-300 text-sm md:text-base leading-relaxed max-w-xl mx-auto md:mx-0">
+                    Protección, comodidad para el clima de Yucatán y la mejor imagen para tu equipo de trabajo. Personalizamos</strong>.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3">
+                    <a href="#cotizador" class="w-full sm:w-auto px-6 py-3.5 bg-hivis-neon text-slate-950 font-bold rounded-xl text-sm hover:bg-yellow-300 transition-all text-center shadow-lg shadow-hivis-neon/20 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-calculator">
+                        </i> Armar Pedido / Cotizar
+                    </a>
+                    <a href="#catalogo" class="w-full sm:w-auto px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-semibold rounded-xl text-sm transition-all text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-shirt">
+                        </i> Ver Catálogo
+                    </a>
+                </div>
+
+                <!-- TRUST BADGES -->
+                <div class="pt-4 grid grid-cols-3 gap-2 border-t border-slate-800 text-slate-400 text-xs">
+                    <div class="flex flex-col items-center md:items-start gap-1">
+                        <i class="fa-solid fa-shield-halved text-hivis-neon text-base">
+                        </i>
+                        <span>Cinta Reflejante / Norma</span>
+                    </div>
+                    <div class="flex flex-col items-center md:items-start gap-1">
+                        <i class="fa-solid fa-sun text-amber-400 text-base">
+                        </i>
+                        <span>Tela Fresca y Ligera</span>
+                    </div>
+                    <div class="flex flex-col items-center md:items-start gap-1">
+                        <i class="fa-solid fa-print text-sky-400 text-base">
+                        </i>
+                        <span>Nombre e Impresión</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HERO IMAGE / BANNER SHOWCASE -->
+            <div class="relative">
+                <div class="relative rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-800">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" 
+                         alt="Trabajadores con camisas de alta visibilidad" 
+                         class="w-full h-80 md:h-[400px] object-cover opacity-80"
+                         onerror="this.src='https://placehold.co/800x600/1e293b/CCFF00?text=Camisas+Hi-Vis+Merida'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent">
+                    </div>
+                    <div class="absolute bottom-4 left-4 right-4 bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-700/80">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-semibold text-hivis-neon">¿Necesitas logotipo en tus camisas?</p>
+                            </div>
+                            <span class="bg-amber-500/20 text-amber-300 text-xs px-2.5 py-1 rounded-full border border-amber-500/40 font-semibold">Mándanos un mensaje para ver opciones</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATALOG SECTION -->
+    <section id="catalogo" class="py-12 max-w-6xl mx-auto px-4 w-full">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Modelos Disponibles</h2>
+            <p class="text-slate-400 text-sm">Selecciona el estilo que necesitas para tu personal.</p>
+        </div>
+
+        <!-- CATEGORY FILTERS -->
+        <div class="flex items-center justify-center gap-2 overflow-x-auto pb-4 no-scrollbar mb-8">
+            <button type="button" onclick="filterCatalog('todos')" class="filter-btn active px-4 py-2 rounded-full text-xs font-bold transition-all bg-hivis-neon text-slate-950 shadow-md" data-filter="todos">
+                Todos los Estilos
+            </button>
+            <button type="button" onclick="filterCatalog('manga-larga')" class="filter-btn px-4 py-2 rounded-full text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all border border-slate-700" data-filter="manga-larga">
+                Manga Larga
+            </button>
+            <button type="button" onclick="filterCatalog('reflejante')" class="filter-btn px-4 py-2 rounded-full text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all border border-slate-700" data-filter="reflejante">
+                Reflejante
+            </button>
+            <button type="button" onclick="filterCatalog('bicolor')" class="filter-btn px-4 py-2 rounded-full text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all border border-slate-700" data-filter="bicolor">
+                Bicolor / Especiales
+            </button>
+        </div>
+
+        <!-- PRODUCT GRID -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamic items rendered via JS -->
+        </div>
+    </section>
+
+    <!-- CUSTOM ORDER BUILDER / QUOTE FORM -->
+    <section id="cotizador" class="py-12 bg-slate-800/60 border-y border-slate-800">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-slate-900 border border-slate-700 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-hivis-neon via-amber-400 to-hivis-orange">
+                </div>
+
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+                    <div>
+                        <span class="text-xs font-bold text-hivis-neon tracking-wider uppercase">Paso a Paso</span>
+                        <h2 class="text-xl md:text-2xl font-black text-white">Generador de Pedido / Cotización</h2>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-hivis-neon">
+                        <i class="fa-solid fa-list-check text-lg">
+                        </i>
+                    </div>
+                </div>
+
+                <form id="orderForm" onsubmit="event.preventDefault(); sendWhatsAppOrder();" class="space-y-6">
+                    
+                    <!-- 1. MODEL SELECTION -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                            1. Selecciona el Modelo de Camisa
+                        </label>
+                        <select id="modelSelect" onchange="updateFormModelDetails()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-hivis-neon font-medium">
+                            <!-- Populated via JS -->
+                        </select>
+                    </div>
+
+                    <!-- 2. COLOR SELECTION -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                            2. Selecciona el Color
+                        </label>
+                        <div id="colorSwatches" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <!-- Color Swatches via JS -->
+                        </div>
+                    </div>
+
+                    <!-- 3. SIZES & QUANTITIES -->
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+                                3. Cantidades por Talla
+                            </label>
+                            <span class="text-xs text-slate-400">Total Piezas: <strong id="totalQtyDisplay" class="text-hivis-neon text-sm">0</strong></span>
+                        </div>
+                        <div class="grid grid-cols-3 sm:grid-cols-5 gap-3 bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                            <div>
+                                <label class="block text-xs text-center font-bold text-slate-400 mb-1">Chica (S)</label>
+                                <input type="number" min="0" value="0" id="size_S" oninput="calculateTotalQty()" class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 text-center text-white text-sm font-bold focus:border-hivis-neon focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-center font-bold text-slate-400 mb-1">Mediana (M)</label>
+                                <input type="number" min="0" value="0" id="size_M" oninput="calculateTotalQty()" class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 text-center text-white text-sm font-bold focus:border-hivis-neon focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-center font-bold text-slate-400 mb-1">Grande (L)</label>
+                                <input type="number" min="0" value="0" id="size_L" oninput="calculateTotalQty()" class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 text-center text-white text-sm font-bold focus:border-hivis-neon focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-center font-bold text-slate-400 mb-1">X-Grande (XL)</label>
+                                <input type="number" min="0" value="0" id="size_XL" oninput="calculateTotalQty()" class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 text-center text-white text-sm font-bold focus:border-hivis-neon focus:outline-none">
+                            </div>
+                            <div class="col-span-3 sm:col-span-1">
+                                <label class="block text-xs text-center font-bold text-slate-400 mb-1">2XL / 3XL</label>
+                                <input type="number" min="0" value="0" id="size_2XL" oninput="calculateTotalQty()" class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 text-center text-white text-sm font-bold focus:border-hivis-neon focus:outline-none">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. ADD EXTRA PRODUCT TO ORDER -->
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between gap-3">
+                            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+                                4. Agregar Otro Producto al Pedido
+                            </label>
+                            <div class="flex items-center gap-2">
+                                <button type="button" onclick="addSelectedProductToOrder()" class="px-3 py-2 rounded-xl bg-hivis-neon text-slate-950 text-xs font-bold hover:bg-yellow-300 transition-all">
+                                    + Agregar Producto
+                                </button>
+                                <button type="button" id="clearOrderBtn" onclick="clearAllOrderItems()" class="px-3 py-2 rounded-xl border border-slate-600 bg-slate-800 text-slate-200 text-[10px] font-bold hover:border-slate-500 transition-all hidden">
+                                    Limpiar Todo
+                                </button>
+                            </div>
+                        </div>
+                        <div id="orderItemsList" class="space-y-2"></div>
+                    </div>
+
+                    <!-- 5. CLIENT DATA & NOTES -->
+                    <div class="space-y-3">
+                        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+                            5. Datos del Cliente y Detalles
+                        </label>
+                        <div class="grid sm:grid-cols-1 gap-3">
+                            <input type="text" id="clientName" required placeholder="Tu Nombre o Empresa *" class="bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-hivis-neon">
+                        </div>
+                        <textarea id="orderNotes" rows="3" placeholder="Notas sobre ubicación de logos, nombres requeridos o dudas especiales..." class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-white text-sm focus:outline-none focus:border-hivis-neon"></textarea>
+                    </div>
+
+                    <!-- LIVE ORDER RECAP CARD -->
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+                        <div class="flex items-center justify-between text-xs text-slate-400">
+                            <span>Resumen del Pedido:</span>
+                            <span class="text-amber-400 font-bold"><i class="fa-solid fa-clock">
+                            </i> Cotización Rápida</span>
+                        </div>
+                        <div id="recapText" class="text-sm text-slate-200 font-mono space-y-1">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- SUBMIT BUTTON -->
+                    <button type="submit" class="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold rounded-xl text-base shadow-xl shadow-emerald-500/20 flex items-center justify-center gap-3 transition-transform active:scale-[0.99]">
+                        <i class="fa-brands fa-whatsapp text-2xl">
+                        </i>
+                        <span>Enviar Pedido por WhatsApp</span>
+                    </button>
+                    <p class="text-center text-xs text-slate-400">Se abrirá WhatsApp con el resumen listo para enviar con un solo clic.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADVANTAGES / FEATURES SECTION -->
+    <section id="ventajas" class="py-12 max-w-6xl mx-auto px-4">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-2">¿Por qué elegirnos en Mérida?</h2>
+            <p class="text-slate-400 text-sm">Somos fabricantes locales enfocados en la calidad y duración de tu uniforme industrial.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-slate-800/40 border border-slate-800 p-6 rounded-2xl">
+                <div class="w-12 h-12 bg-hivis-neon/10 rounded-xl flex items-center justify-center text-hivis-neon mb-4 text-xl">
+                    <i class="fa-solid fa-shirt">
+                    </i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">Telas Frescas e Industriales</h3>
+                <p class="text-slate-400 text-sm">Diseñadas para tolerar el calor intenso de Yucatán sin perder color ni resistencia en jornadas pesadas.</p>
+            </div>
+
+            <div class="bg-slate-800/40 border border-slate-800 p-6 rounded-2xl">
+                <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-400 mb-4 text-xl">
+                    <i class="fa-solid fa-wand-magic-sparkles">
+                    </i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">Reflejante de Alta Calidad</h3>
+                <p class="text-slate-400 text-sm">Cintas reflejantes de alta visibilidad que cumplen normas de seguridad vial e industrial.</p>
+            </div>
+
+            <div class="bg-slate-800/40 border border-slate-800 p-6 rounded-2xl sm:col-span-2 lg:col-span-1">
+                <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400 mb-4 text-xl">
+                    <i class="fa-solid fa-bolt">
+                    </i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">Entregas Puntuales</h3>
+                <p class="text-slate-400 text-sm">Atención personalizada directa por WhatsApp. Entregas locales en Mérida.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-8 text-center text-slate-500 text-xs">
+        <div class="max-w-6xl mx-auto px-4 space-y-3">
+            <div class="flex items-center justify-center gap-2 text-white font-bold text-base">
+                <i class="fa-solid fa-vest text-hivis-neon">
+                </i>
+                <span>Playeras AV</span>
+            </div>
+            <p>Confección y Personalización de Playeras de Alta Visibilidad</p>
+            <p>Mérida, Yucatán, México • Atendiendo a constructoras, talleres y empresas de servicios.</p>
+            <p class="pt-2 text-slate-600">© <span id="year"></span> Playeras AV. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- FIXED MOBILE FOOTER BAR -->
+    <div class="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 p-3 flex items-center justify-around md:hidden z-50">
+        <a href="#catalogo" class="flex flex-col items-center text-slate-300 hover:text-hivis-neon text-xs">
+            <i class="fa-solid fa-shirt text-base mb-0.5">
+            </i>
+            <span>Catálogo</span>
+        </a>
+        <a href="#cotizador" class="flex flex-col items-center text-hivis-neon font-bold text-xs">
+            <i class="fa-solid fa-calculator text-base mb-0.5">
+            </i>
+            <span>Pedir / Cotizar</span>
+        </a>
+        <a href="https://wa.me/529991234567?text=Hola,%20me%20gustaría%20hacer%20una%20consulta" 
+           target="_blank" 
+           class="flex flex-col items-center text-emerald-400 font-bold text-xs">
+            <i class="fa-brands fa-whatsapp text-base mb-0.5">
+            </i>
+            <span>WhatsApp</span>
+        </a>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // DATA: SHIRT CATALOG
+        const products = [
+            {
+                id: 'MOD-HV100',
+                title: 'Manga Larga Reflejante',
+                category: 'reflejante',
+                badge: 'Reflejante',
+                image: 'https://plus.unsplash.com/premium_photo-1681989486976-9ec9d2eac57a?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
+                desc: 'Manga larga fresca con doble cinta reflejante horizontal de 2 pulgadas en torso y brazos. Ideal para obras al aire libre.',
+                colors: [
+                    { name: 'Amarillo Neón', hex: '#CCFF00' },
+                    { name: 'Naranja Neón', hex: '#FF6B00' },
+                    { name: 'Verde Neón', hex: '#10B981' }
+                ],
+                sizes: ['S', 'M', 'L', 'XL', '2XL']
+            },
+            {
+                id: 'MOD-HV101',
+                title: 'Manga Corta Reflejante',
+                category: 'manga-corta',
+                badge: 'Manga Corta',
+                image: 'images/img1.jpg',
+                desc: 'Elegante y fresca. Cuello con botones y cintas reflejantes pecheras. Perfecta para supervisores y personal técnico.',
+                colors: [
+                    { name: 'Amarillo Neón', hex: '#CCFF00' },
+                    { name: 'Azul Marino c/ Reflejante', hex: '#1E3A8A' },
+                    { name: 'Naranja Neón', hex: '#FF6B00' }
+                ],
+                sizes: ['S', 'M', 'L', 'XL', '2XL']
+            },
+            {
+                id: 'MOD-HV200',
+                title: 'Bicolor',
+                category: 'bicolor',
+                badge: 'Bicolor',
+                image: 'https://plus.unsplash.com/premium_photo-1681989499439-6bbe133f4556?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
+                desc: 'Combina azul marino en zonas de roce (cuello e inferior) con neón reflejante superior para ocultar manchas de trabajo.',
+                colors: [
+                    { name: 'Amarillo / Azul Marino', hex: '#CCFF00' },
+                    { name: 'Naranja / Azul Marino', hex: '#FF6B00' }
+                ],
+                sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL']
+            },
+            {
+                id: 'MOD-HV201',
+                title: 'Bicolor Reflejante',
+                category: 'Bicolor Reflejante',
+                badge: 'Bicolor Reflejante',
+                image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80',
+                desc: 'Tela duradera con dos bolsas en pecho con cartera. Cintas reflejantes cruzadas en espalda para máxima protección.',
+                colors: [
+                    { name: 'Amarillo Neón', hex: '#CCFF00' },
+                    { name: 'Naranja Neón', hex: '#FF6B00' },
+                    { name: 'Azul Marino', hex: '#1E3A8A' }
+                ],
+                sizes: ['S', 'M', 'L', 'XL', '2XL']
+            },
+            {
+                id: 'MOD-HV300',
+                title: 'Manga Corta sin reflejante',
+                category: 'sin-reflejante',
+                badge: 'Manga Corta',
+                image: 'https://plus.unsplash.com/premium_photo-1682617326577-b63d6997c007?q=80&w=1033&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
+                desc: 'Microfibra transpirable de secado rápido. Diseñada especialmente para el clima húmedo y caluroso de Mérida.',
+                colors: [
+                    { name: 'Amarillo Neón', hex: '#CCFF00' },
+                    { name: 'Naranja Neón', hex: '#FF6B00' }
+                ],
+                sizes: ['S', 'M', 'L', 'XL']
+            },
+            {
+                id: 'MOD-HV301',
+                title: 'Manga Larga Sin Reflejante',
+                category: 'sin-reflejante',
+                badge: 'Manga Larga Sin Reflejante',
+                image: 'https://media.istockphoto.com/id/2297504318/photo/colorful-workwear-including-high-visibility-safety-vests-and-t-shirts-in-a-closet.jpg?s=612x612&w=is&k=20&c=7wACIH4Su6iNY_uAcy6ML6bsL3XF8ro3m-0EHHjgCF8=',
+                desc: 'Chaleco de mallas ligeras sobrepuesto, cierre frontal y multi-bolsillo para identificación y plumas.',
+                colors: [
+                    { name: 'Amarillo Neón', hex: '#CCFF00' },
+                    { name: 'Naranja Neón', hex: '#FF6B00' }
+                ],
+                sizes: ['M', 'L', 'XL', '2XL']
+            }
+        ];
+
+        let selectedModel = products[0];
+        let selectedColor = products[0].colors[0].name;
+        let orderItems = [];
+
+        // RENDER PRODUCTS IN GRID
+        function renderProducts(filter = 'todos') {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            const filtered = filter === 'todos' 
+                ? products 
+                : products.filter(p => p.category === filter);
+
+            filtered.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-slate-700 transition-all hover:shadow-xl group';
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-52 overflow-hidden bg-slate-800">
+                            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-90" onerror="this.src='https://placehold.co/600x400/1e293b/CCFF00?text=${p.id}'">
+                            <span class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-md text-hivis-neon text-[10px] font-bold px-2.5 py-1 rounded-full border border-hivis-neon/30">
+                                ${p.id}
+                            </span>
+                            <span class="absolute top-3 right-3 bg-amber-400 text-slate-950 text-[10px] font-extrabold px-2 py-0.5 rounded shadow">
+                                ${p.badge}
+                            </span>
+                        </div>
+                        <div class="p-5 space-y-3">
+                            <h3 class="text-base font-bold text-white group-hover:text-hivis-neon transition-colors">${p.title}</h3>
+                            <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">${p.desc}</p>
+
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-500 uppercase block mb-1">Colores Disponibles:</span>
+                                <div class="flex items-center gap-1.5">
+                                    ${p.colors.map(c => `
+                                        <span class="inline-block w-4 h-4 rounded-full border border-slate-600 shadow-sm" style="background-color: ${c.hex}" title="${c.name}"></span>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 pt-0">
+                        <button onclick="selectProductForOrder('${p.id}')" class="w-full py-2.5 bg-slate-800 hover:bg-hivis-neon hover:text-slate-950 text-white font-bold rounded-xl text-xs border border-slate-700 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-circle-plus">
+                            </i> Seleccionar para Pedido
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // FILTER CATALOG CATEGORIES
+        function filterCatalog(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.className = 'filter-btn active px-4 py-2 rounded-full text-xs font-bold transition-all bg-hivis-neon text-slate-950 shadow-md';
+                } else {
+                    btn.className = 'filter-btn px-4 py-2 rounded-full text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all border border-slate-700';
+                }
+            });
+            renderProducts(category);
+        }
+
+        // POPULATE FORM DROPDOWN
+        function populateModelSelect() {
+            const select = document.getElementById('modelSelect');
+            select.innerHTML = '';
+            products.forEach(p => {
+                const opt = document.createElement('option');
+                opt.value = p.id;
+                opt.textContent = `${p.id} - ${p.title}`;
+                select.appendChild(opt);
+            });
+        }
+
+        // WHEN USER CLICKS "SELECCIONAR PARA PEDIDO"
+        function selectProductForOrder(modelId) {
+            const select = document.getElementById('modelSelect');
+            select.value = modelId;
+            updateFormModelDetails();
+            
+            // Scroll smoothly to order form
+            document.getElementById('cotizador').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // UPDATE COLOR SWATCHES ACCORDING TO MODEL
+        function updateFormModelDetails() {
+            const modelId = document.getElementById('modelSelect').value;
+            selectedModel = products.find(p => p.id === modelId) || products[0];
+
+            const swatchContainer = document.getElementById('colorSwatches');
+            swatchContainer.innerHTML = '';
+
+            selectedModel.colors.forEach((c, index) => {
+                if (index === 0) selectedColor = c.name;
+
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `color-btn flex items-center gap-2 p-2.5 rounded-xl border text-xs font-bold transition-all ${index === 0 ? 'border-hivis-neon bg-slate-800 text-white' : 'border-slate-700 bg-slate-900 text-slate-400 hover:border-slate-600'}`;
+                btn.onclick = () => selectColor(c.name, btn);
+
+                btn.innerHTML = `
+                    <span class="w-4 h-4 rounded-full border border-slate-600" style="background-color: ${c.hex}"></span>
+                    <span>${c.name}</span>
+                `;
+                swatchContainer.appendChild(btn);
+            });
+
+            updateRecap();
+        }
+
+        function selectColor(colorName, btnElement) {
+            selectedColor = colorName;
+            document.querySelectorAll('.color-btn').forEach(b => {
+                b.className = 'color-btn flex items-center gap-2 p-2.5 rounded-xl border border-slate-700 bg-slate-900 text-slate-400 hover:border-slate-600 text-xs font-bold transition-all';
+            });
+            btnElement.className = 'color-btn flex items-center gap-2 p-2.5 rounded-xl border border-hivis-neon bg-slate-800 text-white text-xs font-bold transition-all';
+            updateRecap();
+        }
+
+        function getCurrentQtyValues() {
+            const s = parseInt(document.getElementById('size_S').value) || 0;
+            const m = parseInt(document.getElementById('size_M').value) || 0;
+            const l = parseInt(document.getElementById('size_L').value) || 0;
+            const xl = parseInt(document.getElementById('size_XL').value) || 0;
+            const xxl = parseInt(document.getElementById('size_2XL').value) || 0;
+            const total = s + m + l + xl + xxl;
+            return { s, m, l, xl, xxl, total };
+        }
+
+        // CALCULATE TOTAL QUANTITY
+        function calculateTotalQty() {
+            const qty = getCurrentQtyValues();
+            document.getElementById('totalQtyDisplay').textContent = qty.total;
+            updateRecap();
+            return qty;
+        }
+
+        function clearCurrentItemFields() {
+            document.getElementById('size_S').value = 0;
+            document.getElementById('size_M').value = 0;
+            document.getElementById('size_L').value = 0;
+            document.getElementById('size_XL').value = 0;
+            document.getElementById('size_2XL').value = 0;
+            calculateTotalQty();
+        }
+
+        function addSelectedProductToOrder() {
+            const qty = getCurrentQtyValues();
+            if (qty.total <= 0) {
+                alert('Ingresa al menos 1 pieza en alguna talla antes de agregar el producto.');
+                document.getElementById('size_M').focus();
+                return;
+            }
+
+            orderItems.push({
+                id: selectedModel.id,
+                title: selectedModel.title,
+                color: selectedColor,
+                ...qty
+            });
+
+            renderOrderItems();
+            clearCurrentItemFields();
+            updateRecap();
+        }
+
+        function removeOrderItem(index) {
+            orderItems.splice(index, 1);
+            renderOrderItems();
+            updateRecap();
+        }
+
+        function clearAllOrderItems() {
+            orderItems = [];
+            renderOrderItems();
+            updateRecap();
+        }
+
+        function formatOrderedSizes(item) {
+            const sizes = [
+                { label: 'S', value: item.s },
+                { label: 'M', value: item.m },
+                { label: 'L', value: item.l },
+                { label: 'XL', value: item.xl },
+                { label: '2XL', value: item.xxl }
+            ];
+
+            const activeSizes = sizes.filter(size => size.value > 0);
+            if (activeSizes.length === 0) return 'Sin cantidades';
+
+            return activeSizes.map(size => `${size.label}:${size.value}`).join(' | ');
+        }
+
+        function renderOrderItems() {
+            const container = document.getElementById('orderItemsList');
+            const clearBtn = document.getElementById('clearOrderBtn');
+            if (!container) return;
+
+            if (orderItems.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-slate-800/60 border border-dashed border-slate-700 rounded-xl p-3 text-xs text-slate-400 text-center">
+                        Aún no agregas productos. Selecciona un modelo, color y tallas, luego presiona “Agregar Producto”.
+                    </div>
+                `;
+                if (clearBtn) clearBtn.classList.add('hidden');
+                return;
+            }
+
+            if (clearBtn) clearBtn.classList.remove('hidden');
+
+            container.innerHTML = orderItems.map((item, index) => `
+                <div class="bg-slate-800 border border-slate-700 rounded-xl p-3">
+                    <div class="flex items-center justify-between gap-3 mb-2">
+                        <div>
+                            <p class="text-xs font-bold text-hivis-neon">${item.id}</p>
+                            <p class="text-sm font-semibold text-white">${item.title}</p>
+                        </div>
+                        <button type="button" onclick="removeOrderItem(${index})" class="text-[10px] font-bold text-red-300 hover:text-red-200">
+                            Quitar
+                        </button>
+                    </div>
+                    <div class="text-[11px] text-slate-300">
+                        <span class="font-semibold">Color:</span> ${item.color}<br>
+                        <span class="font-semibold">Tallas:</span> ${formatOrderedSizes(item)} <span class="text-hivis-neon">(${item.total} pzas)</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // UPDATE RECAP CARD
+        function updateRecap() {
+            const qty = getCurrentQtyValues();
+            const activeTotal = orderItems.length > 0
+                ? orderItems.reduce((sum, item) => sum + item.total, 0)
+                : qty.total;
+
+            const recapBox = document.getElementById('recapText');
+
+            if (orderItems.length === 0) {
+                recapBox.innerHTML = `
+                    <div class="text-slate-400 text-xs italic">Aún no has agregado ningún producto.</div>
+                `;
+                return;
+            }
+
+            recapBox.innerHTML = `
+                <div>• <strong>Productos agregados:</strong> ${orderItems.length}</div>
+                ${orderItems.map(item => `
+                    <div>• ${item.id} - ${item.title} (${item.color}) • ${item.total} pzas</div>
+                `).join('')}
+                <div>• <strong>Total General:</strong> ${activeTotal} pzas</div>
+            `;
+        }
+
+        // SEND FORMATTED WHATSAPP MESSAGE
+        function sendWhatsAppOrder() {
+            const clientName = document.getElementById('clientName').value.trim();
+            const notes = document.getElementById('orderNotes').value.trim();
+            const currentQty = getCurrentQtyValues();
+
+            if (!clientName) {
+                alert('Por favor, ingresa tu nombre o el de tu empresa.');
+                document.getElementById('clientName').focus();
+                return;
+            }
+
+            if (orderItems.length === 0 && currentQty.total <= 0) {
+                alert('Por favor, agrega al menos un producto con cantidades antes de enviar.');
+                document.getElementById('size_M').focus();
+                return;
+            }
+
+            if (orderItems.length === 0 && currentQty.total > 0) {
+                orderItems.push({
+                    id: selectedModel.id,
+                    title: selectedModel.title,
+                    color: selectedColor,
+                    ...currentQty
+                });
+            }
+
+            const totalItems = orderItems.reduce((sum, item) => sum + item.total, 0);
+
+            // Construct WhatsApp Message
+            let msg = `*NUEVO PEDIDO / SOLICITUD DE COTIZACIÓN*\n`;
+            msg += `------------------------------------\n`;
+            msg += `👤 *Cliente:* ${clientName}\n`;
+            msg += `\n👕 *PRODUCTOS SOLICITADOS:*\n`;
+            orderItems.forEach((item, index) => {
+                const activeSizes = [
+                    { label: 'S', value: item.s },
+                    { label: 'M', value: item.m },
+                    { label: 'L', value: item.l },
+                    { label: 'XL', value: item.xl },
+                    { label: '2XL', value: item.xxl }
+                ].filter(size => size.value > 0);
+                const sizesText = activeSizes.map(size => `${size.label}:${size.value}`).join(' | ');
+
+                msg += `${index + 1}. *${item.id} - ${item.title}*\n`;
+                msg += `   • Color: ${item.color}\n`;
+                msg += `   • Tallas: ${sizesText}\n\n`;
+            });
+            msg += `📦 *Total de Piezas:* ${totalItems}\n`;
+            if (notes) msg += `\n📝 *Notas Adicionales:*\n"${notes}"\n`;
+            msg += `------------------------------------\n`;
+            msg += `Enviado desde el sitio web Playeras AV.`;
+
+            // Phone Number (Default Mérida WhatsApp placeholder)
+            const phone = "529999909284";
+            const encodedUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+
+            // Open WhatsApp
+            window.open(encodedUrl, '_blank');
+        }
+
+        // INITIALIZATION
+        window.onload = function() {
+            document.getElementById('year').textContent = new Date().getFullYear();
+            renderProducts('todos');
+            populateModelSelect();
+            updateFormModelDetails();
+            updateRecap();
+        };
+    </script>
+</body>
+</html>

@@ -194,6 +194,7 @@
         </div>
 
         <!-- PRODUCT GRID -->
+        <p id="catalog-data-status" class="hidden mb-4 rounded-xl border px-4 py-3 text-sm" role="status" aria-live="polite"></p>
         <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Dynamic items rendered via JS -->
         </div>
@@ -324,18 +325,6 @@
                         <textarea id="orderNotes" rows="3" placeholder="Cualquier solicitud adicional o dudas aquí" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-white text-sm focus:outline-none focus:border-hivis-neon"></textarea>
                     </div>
 
-                    <!-- LIVE ORDER RECAP CARD -->
-                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
-                        <div class="flex items-center justify-between text-xs text-slate-400">
-                            <span>Resumen del Pedido:</span>
-                            <span class="text-amber-400 font-bold"><i class="fa-solid fa-clock">
-                            </i> Cotización Rápida</span>
-                        </div>
-                        <div id="recapText" class="text-sm text-slate-200 font-mono space-y-1">
-                            <!-- Populated dynamically -->
-                        </div>
-                    </div>
-
                     <!-- SUBMIT BUTTON -->
                     <button type="submit" class="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold rounded-xl text-base shadow-xl shadow-emerald-500/20 flex items-center justify-center gap-3 transition-transform active:scale-[0.99]">
                         <i class="fa-brands fa-whatsapp text-2xl">
@@ -427,6 +416,7 @@
             {
                 id: 'MOD-HV100',
                 title: 'Playera con Reflejante',
+                price: null,
                 category: 'Playera con reflejante',
                 badge: 'Reflejante',
                 image: 'images/YLSR.jpg',
@@ -444,6 +434,7 @@
             {
                 id: 'MOD-HV101',
                 title: 'Playera Reflejante + Gafete',
+                price: null,
                 category: 'Playera con reflejante y gafete',
                 badge: 'reflejante + Gafete',
                 image: 'images/YSsR.jpg',
@@ -461,6 +452,7 @@
             {
                 id: 'MOD-HV200',
                 title: 'Sencilla',
+                price: null,
                 category: 'Sencilla',
                 badge: 'Sencilla',
                 image: 'images/OLSr.jpg',
@@ -478,6 +470,7 @@
             {
                 id: 'MOD-HV201',
                 title: 'Capucha - Pasamontañas',
+                price: null,
                 category: 'Capucha - Pasamontañas',
                 badge: 'Capucha - Pasamontañas',
                 image: 'images/PLSCapR.jpg',
@@ -495,6 +488,7 @@
             {
                 id: 'MOD-HV300',
                 title: 'Thermoadherible',
+                price: null,
                 category: 'Thermoadherible',
                 badge: 'Thermoadherible',
                 image: 'images/WomanAd.jpg',
@@ -512,6 +506,7 @@
             {
                 id: 'MOD-HV301',
                 title: 'Polo',
+                price: null,
                 category: 'Polo',
                 badge: 'Polo',
                 image: 'images/PoloRbiR.jpg',
@@ -529,6 +524,7 @@
             {
                 id: 'MOD-HV400',
                 title: '2 Colores Reflejante',
+                price: null,
                 category: '2 Colores Reflejante',
                 badge: '2 Colores Reflejante',
                 image: 'images/OBiLSR.jpg',
@@ -544,9 +540,123 @@
                 sizes: ['M', 'L', 'XL', '2XL']
             }
         ];
+        const PRODUCT_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTy2NZAKR8BeMcoWHjITSaOqs60WdZ7maiGLF_5rK3d0wqaAyrUmnBVogR8kIndw6wQ_pV0oriYKB7N/pub?gid=0&single=true&output=csv';
         let selectedModel = products[0];
         let selectedColor = products[0].colors[0].name;
         let orderItems = [];
+
+        function parseCsv(text) {
+            const rows = [];
+            let row = [];
+            let field = '';
+            let quoted = false;
+            const input = text.replace(/^\uFEFF/, '');
+
+            for (let i = 0; i < input.length; i++) {
+                const char = input[i];
+                if (char === '"') {
+                    if (quoted && input[i + 1] === '"') {
+                        field += '"';
+                        i++;
+                    } else {
+                        quoted = !quoted;
+                    }
+                } else if (char === ',' && !quoted) {
+                    row.push(field);
+                    field = '';
+                } else if ((char === '\n' || char === '\r') && !quoted) {
+                    if (char === '\r' && input[i + 1] === '\n') i++;
+                    row.push(field);
+                    if (row.some(value => value.trim())) rows.push(row);
+                    row = [];
+                    field = '';
+                } else {
+                    field += char;
+                }
+            }
+
+            if (quoted) throw new Error('La hoja contiene comillas sin cerrar en el CSV.');
+            if (field || row.length) {
+                row.push(field);
+                if (row.some(value => value.trim())) rows.push(row);
+            }
+            return rows;
+        }
+
+        function parseSheetPrice(value, rowNumber) {
+            const normalized = value.trim().replace(/^\$/, '').replace(/,/g, '').replace(/\s*(MXN)?$/i, '');
+            if (!normalized) return null;
+            if (!/^\d+(\.\d{1,2})?$/.test(normalized)) {
+                throw new Error(`El precio de la fila ${rowNumber} no es válido. Usa un número, por ejemplo 245 o 245.50.`);
+            }
+            return Number(normalized);
+        }
+
+        async function loadProductsFromSheet() {
+            const response = await fetch(PRODUCT_SHEET_CSV_URL, { cache: 'no-store' });
+            if (!response.ok) throw new Error(`Google Sheets respondió con error HTTP ${response.status}.`);
+
+            const rows = parseCsv(await response.text());
+            if (rows.length < 2) throw new Error('La hoja no contiene filas de productos.');
+
+            const headers = rows[0].map(value => value.trim().toLowerCase());
+            const columns = ['id', 'title', 'price', 'description'];
+            const indexes = Object.fromEntries(columns.map(column => [column, headers.indexOf(column)]));
+            const missingColumns = columns.filter(column => indexes[column] === -1);
+            if (missingColumns.length) {
+                throw new Error(`Faltan columnas requeridas en la hoja: ${missingColumns.join(', ')}.`);
+            }
+
+            const productById = new Map(products.map(product => [product.id, product]));
+            const seenIds = new Set();
+            const productUpdates = new Map();
+            rows.slice(1).forEach((row, index) => {
+                const rowNumber = index + 2;
+                const id = (row[indexes.id] || '').trim();
+                if (!id) return;
+                if (seenIds.has(id)) throw new Error(`El ID ${id} está repetido en la fila ${rowNumber}.`);
+                seenIds.add(id);
+
+                const product = productById.get(id);
+                if (!product) throw new Error(`El ID ${id} de la fila ${rowNumber} no existe en el catálogo del sitio.`);
+                const title = (row[indexes.title] || '').trim();
+                const description = (row[indexes.description] || '').trim();
+                productUpdates.set(id, {
+                    title: title || product.title,
+                    description: description || product.desc,
+                    price: parseSheetPrice(row[indexes.price] || '', rowNumber)
+                });
+            });
+
+            const missingProducts = products.filter(product => !seenIds.has(product.id)).map(product => product.id);
+            if (missingProducts.length) {
+                throw new Error(`No se encontraron estos productos en la hoja: ${missingProducts.join(', ')}.`);
+            }
+
+            productUpdates.forEach((values, id) => {
+                const product = productById.get(id);
+                product.title = values.title;
+                product.desc = values.description;
+                product.price = values.price;
+            });
+        }
+
+        function formatPrice(price) {
+            return new Intl.NumberFormat('es-MX', {
+                style: 'currency',
+                currency: 'MXN'
+            }).format(price);
+        }
+
+        function escapeHtml(value) {
+            return String(value).replace(/[&<>"']/g, char => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            })[char]);
+        }
 
         // RENDER PRODUCTS IN GRID
         function renderProducts(filter = 'todos') {
@@ -573,8 +683,9 @@
                             </span>
                         </div>
                         <div class="p-5 space-y-3">
-                            <h3 class="text-base font-bold text-white group-hover:text-hivis-neon transition-colors">${p.title}</h3>
-                            <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">${p.desc}</p>
+                            <h3 class="text-base font-bold text-white group-hover:text-hivis-neon transition-colors">${escapeHtml(p.title)}</h3>
+                            <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">${escapeHtml(p.desc)}</p>
+                            <p class="text-hivis-neon text-sm font-extrabold">${p.price === null ? 'Precio por confirmar' : `${formatPrice(p.price)} por pieza`}</p>
 
                             <div>
                                 <span class="text-[10px] font-bold text-slate-500 uppercase block mb-1">Colores Disponibles:</span>
@@ -654,7 +765,6 @@
             });
 
             syncExtraCintaAvailability();
-            updateRecap();
         }
 
         function selectColor(colorName, btnElement) {
@@ -663,7 +773,6 @@
                 b.className = 'color-btn flex items-center gap-2 p-2.5 rounded-xl border border-slate-700 bg-slate-900 text-slate-400 hover:border-slate-600 text-xs font-bold transition-all';
             });
             btnElement.className = 'color-btn flex items-center gap-2 p-2.5 rounded-xl border border-hivis-neon bg-slate-800 text-white text-xs font-bold transition-all';
-            updateRecap();
         }
 
         function getCurrentSleeveType() {
@@ -714,7 +823,6 @@
         function calculateTotalQty() {
             const qty = getCurrentQtyValues();
             document.getElementById('totalQtyDisplay').textContent = qty.total;
-            updateRecap();
             return qty;
         }
 
@@ -741,25 +849,23 @@
             orderItems.push({
                 id: selectedModel.id,
                 title: selectedModel.title,
+                price: selectedModel.price,
                 color: selectedColor,
                 ...qty
             });
 
             renderOrderItems();
             clearCurrentItemFields();
-            updateRecap();
         }
 
         function removeOrderItem(index) {
             orderItems.splice(index, 1);
             renderOrderItems();
-            updateRecap();
         }
 
         function clearAllOrderItems() {
             orderItems = [];
             renderOrderItems();
-            updateRecap();
         }
 
         function formatOrderedSizes(item) {
@@ -775,6 +881,19 @@
             if (activeSizes.length === 0) return 'Sin cantidades';
 
             return activeSizes.map(size => `${size.label}:${size.value}`).join(' | ');
+        }
+
+        function getItemExtraCharges(item) {
+            const charges = [];
+            if (item.xg > 0) charges.push({ label: `XG (${item.xg} × ${formatPrice(35)})`, amount: item.xg * 35 });
+            if (item.xxg > 0) charges.push({ label: `XXG (${item.xxg} × ${formatPrice(70)})`, amount: item.xxg * 70 });
+            if (item.cinta) charges.push({ label: 'Cinta', amount: 95 });
+            if (item.capucha) charges.push({ label: 'Capucha / Pasamontañas', amount: 60 });
+            return charges;
+        }
+
+        function getItemExtraTotal(item) {
+            return getItemExtraCharges(item).reduce((total, charge) => total + charge.amount, 0);
         }
 
         function renderOrderItems() {
@@ -794,56 +913,46 @@
 
             if (clearBtn) clearBtn.classList.remove('hidden');
 
-            container.innerHTML = orderItems.map((item, index) => `
-                <div class="bg-slate-800 border border-slate-700 rounded-xl p-3">
-                    <div class="flex items-center justify-between gap-3 mb-2">
-                        <div>
-                            <p class="text-xs font-bold text-hivis-neon">${item.id}</p>
-                            <p class="text-sm font-semibold text-white">${item.title}</p>
+            container.innerHTML = orderItems.map((item, index) => {
+                const extraCharges = getItemExtraCharges(item);
+                const extraTotal = getItemExtraTotal(item);
+                const baseSubtotal = item.price === null ? null : item.price * item.total;
+                const itemTotal = baseSubtotal === null ? null : baseSubtotal + extraTotal;
+
+                return `
+                    <div class="bg-slate-800 border border-slate-700 rounded-xl p-3">
+                        <div class="flex items-center justify-between gap-3 mb-2">
+                            <div>
+                                <p class="text-xs font-bold text-hivis-neon">${item.id}</p>
+                                <p class="text-sm font-semibold text-white">${escapeHtml(item.title)}</p>
+                            </div>
+                            <button type="button" onclick="removeOrderItem(${index})" class="text-[10px] font-bold text-red-300 hover:text-red-200">
+                                Quitar
+                            </button>
                         </div>
-                        <button type="button" onclick="removeOrderItem(${index})" class="text-[10px] font-bold text-red-300 hover:text-red-200">
-                            Quitar
-                        </button>
+                        <div class="text-[11px] text-slate-300">
+                            <span class="font-semibold">Color:</span> ${escapeHtml(item.color)}<br>
+                            <span class="font-semibold">Manga:</span> ${escapeHtml(item.sleeve || 'Manga corta')}<br>
+                            <span class="font-semibold">Precio:</span> ${item.price === null ? 'Por confirmar' : `${formatPrice(item.price)} por pieza`}<br>
+                            <span class="font-semibold">Tallas:</span> ${formatOrderedSizes(item)} <span class="text-hivis-neon">(${item.total} pzas)</span>
+                            ${extraCharges.length ? `
+                                <div class="mt-2 border-t border-slate-700 pt-2">
+                                    <span class="font-semibold text-white">Extras:</span>
+                                    <ul class="mt-1 space-y-1">
+                                        ${extraCharges.map(charge => `<li>${escapeHtml(charge.label)}: ${formatPrice(charge.amount)}</li>`).join('')}
+                                    </ul>
+                                    <p class="mt-1 font-semibold text-hivis-neon">Total extras: ${formatPrice(extraTotal)}</p>
+                                </div>
+                            ` : ''}
+                            <p class="mt-2 font-semibold text-white">
+                                ${itemTotal === null
+                                    ? `Subtotal de playeras: Por confirmar${extraTotal > 0 ? ` + ${formatPrice(extraTotal)} en extras` : ''}`
+                                    : `Subtotal del producto: ${formatPrice(itemTotal)}`}
+                            </p>
+                        </div>
                     </div>
-                    <div class="text-[11px] text-slate-300">
-                        <span class="font-semibold">Color:</span> ${item.color}<br>
-                        <span class="font-semibold">Manga:</span> ${item.sleeve || 'Manga corta'}<br>
-                        ${item.capucha ? '<span class="font-semibold">Capucha:</span> Sí<br>' : ''}
-                        <span class="font-semibold">Tallas:</span> ${formatOrderedSizes(item)} <span class="text-hivis-neon">(${item.total} pzas)</span>
-                        ${item.cinta ? '<br><span class="font-semibold">Extras:</span> Cinta + $95' : ''}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // UPDATE RECAP CARD
-        function updateRecap() {
-            const qty = getCurrentQtyValues();
-            const activeTotal = orderItems.length > 0
-                ? orderItems.reduce((sum, item) => sum + item.total, 0)
-                : qty.total;
-
-            const recapBox = document.getElementById('recapText');
-
-            if (orderItems.length === 0) {
-                recapBox.innerHTML = `
-                    <div class="text-slate-400 text-xs italic">Aún no has agregado ningún producto.</div>
                 `;
-                return;
-            }
-
-            recapBox.innerHTML = `
-                <div>• <strong>Productos agregados:</strong> ${orderItems.length}</div>
-                ${orderItems.map(item => {
-                    const extras = [];
-                    if (item.xg > 0) extras.push('XG + $35');
-                    if (item.xxg > 0) extras.push('XXG + $70');
-                    if (item.cinta) extras.push('Cinta + $95');
-                    if (item.capucha) extras.push('Capucha / Pasamontañas + $60');
-                    return `<div>• ${item.id} - ${item.title} (${item.color}) • ${item.sleeve || 'Manga corta'} • ${item.total} pzas${extras.length ? ` • Extras: ${extras.join(' | ')}` : ''}</div>`;
-                }).join('')}
-                <div>• <strong>Total General:</strong> ${activeTotal} pzas</div>
-            `;
+            }).join('');
         }
 
         // SEND FORMATTED WHATSAPP MESSAGE
@@ -868,16 +977,18 @@
                 orderItems.push({
                     id: selectedModel.id,
                     title: selectedModel.title,
+                    price: selectedModel.price,
                     color: selectedColor,
                     ...currentQty
                 });
             }
 
             const totalItems = orderItems.reduce((sum, item) => sum + item.total, 0);
-            const extraTotal = orderItems.reduce((sum, item) => {
-                const extra = (item.xg * 35) + (item.xxg * 70) + (item.cinta ? 95 : 0) + (item.capucha ? 60 : 0);
-                return sum + extra;
-            }, 0);
+            const productSubtotal = orderItems.every(item => item.price !== null)
+                ? orderItems.reduce((sum, item) => sum + (item.price * item.total), 0)
+                : null;
+            const extraTotal = orderItems.reduce((sum, item) => sum + getItemExtraTotal(item), 0);
+            const orderSubtotal = productSubtotal === null ? null : productSubtotal + extraTotal;
 
             // Construct WhatsApp Message
             let msg = `*NUEVO PEDIDO / SOLICITUD DE COTIZACIÓN*\n`;
@@ -893,22 +1004,21 @@
                     { label: 'XXG', value: item.xxg }
                 ].filter(size => size.value > 0);
                 const sizesText = activeSizes.map(size => `${size.label}:${size.value}`).join(' | ');
-                const extras = [];
-                if (item.xg > 0) extras.push('XG + $35');
-                if (item.xxg > 0) extras.push('XXG + $70');
-                if (item.cinta) extras.push('Cinta + $95');
-                if (item.capucha) extras.push('Capucha / Pasamontañas + $60');
+                const extras = getItemExtraCharges(item)
+                    .map(charge => `${charge.label}: ${formatPrice(charge.amount)}`);
 
                 msg += `${index + 1}. *${item.id} - ${item.title}*\n`;
+                msg += `   • Precio por pieza: ${item.price === null ? 'Por confirmar' : formatPrice(item.price)}\n`;
                 msg += `   • Color: ${item.color}\n`;
                 msg += `   • Manga: ${item.sleeve || 'Manga corta'}\n`;
-                if (item.capucha) msg += `   • Capucha / Pasamontañas: Sí\n`;
                 msg += `   • Tallas: ${sizesText}\n`;
-                if (extras.length) msg += `   • Extras: ${extras.join(' | ')}\n`;
+                if (extras.length) msg += `   • Extras: ${extras.join(' | ')}\n   • Total extras: ${formatPrice(getItemExtraTotal(item))}\n`;
                 msg += `\n`;
             });
             msg += `📦 *Total de Piezas:* ${totalItems}\n`;
-            if (extraTotal > 0) msg += `💰 *Cobro extra por tallas/cinta:* $${extraTotal}\n`;
+            msg += `🧾 *Subtotal de productos:* ${productSubtotal === null ? 'Por confirmar' : formatPrice(productSubtotal)}\n`;
+            if (extraTotal > 0) msg += `💰 *Total de extras:* ${formatPrice(extraTotal)}\n`;
+            msg += `💵 *Subtotal del pedido:* ${orderSubtotal === null ? 'Por confirmar' : formatPrice(orderSubtotal)}\n`;
             if (notes) msg += `\n📝 *Notas Adicionales:*\n"${notes}"\n`;
             msg += `------------------------------------\n`;
             msg += `Enviado desde el sitio web Playeras AV.`;
@@ -922,12 +1032,19 @@
         }
 
         // INITIALIZATION
-        window.onload = function() {
+        window.onload = async function() {
             document.getElementById('year').textContent = new Date().getFullYear();
+            try {
+                await loadProductsFromSheet();
+            } catch (error) {
+                console.error('No se pudieron cargar productos desde Google Sheets:', error);
+                const status = document.getElementById('catalog-data-status');
+                status.className = 'mb-4 rounded-xl border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-sm text-amber-200';
+                status.textContent = 'No se pudieron cargar los precios y descripciones de Google Sheets. Se muestran los datos guardados en el sitio; revisa que la hoja esté publicada y tenga las columnas e IDs correctos.';
+            }
             renderProducts('todos');
             populateModelSelect();
             updateFormModelDetails();
-            updateRecap();
         };
     </script>
 </body>

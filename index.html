@@ -112,15 +112,15 @@
                 </h1>
 
                 <p class="text-slate-300 text-sm md:text-base leading-relaxed max-w-xl mx-auto md:mx-0">
-                    Protección, comodidad para el clima de Yucatán y la mejor imagen para tu equipo de trabajo. ¡SÓLO UN PRECIO en manga corta o larga! Gran variedad de colores además de los básicos: amarillo, rosa y naranja. Puedes pedir otros colores desde 2 piezas, sujeto a disponibilidad en fábrica.</strong>.
+                    Protección, comodidad para el clima de Yucatán y la mejor imagen para tu equipo de trabajo. ¡SÓLO UN PRECIO en manga corta o larga! Gran variedad de colores además de los básicos: amarillo, rojo y naranja. Puedes pedir otros colores desde 2 piezas, sujeto a disponibilidad en fábrica.
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3">
-                    <a href="#cotizador" class="w-full sm:w-auto px-6 py-3.5 bg-hivis-neon text-slate-950 font-bold rounded-xl text-sm hover:bg-yellow-300 transition-all text-center shadow-lg shadow-hivis-neon/20 flex items-center justify-center gap-2">
+                    <a href="#cotizador" class="w-full sm:w-auto px-6 py-3.5 bg-hivis-neon text-slate-950 font-bold rounded-xl text-sm hover:bg-yellow-300 transition-all text-center shadow-lg shadow-hivis-neon/20">
                         <i class="fa-solid fa-calculator">
                         </i> Armar Pedido / Cotizar
                     </a>
-                    <a href="#catalogo" class="w-full sm:w-auto px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-semibold rounded-xl text-sm transition-all text-center flex items-center justify-center gap-2">
+                    <a href="#catalogo" class="w-full sm:w-auto px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-semibold rounded-xl text-sm transition-all text-center">
                         <i class="fa-solid fa-shirt">
                         </i> Ver Catálogo
                     </a>
@@ -218,13 +218,12 @@
                 </div>
 
                 <form id="orderForm" onsubmit="event.preventDefault(); sendWhatsAppOrder();" class="space-y-6">
-                    
                     <!-- 1. MODEL SELECTION -->
                     <div>
                         <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
                             1. Selecciona el Modelo de Camisa
                         </label>
-                        <select id="modelSelect" onchange="updateFormModelDetails()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-hivis-neon font-medium">
+                        <select id="modelSelect" onchange="updateFormModelDetails()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-hivis-neon">
                             <!-- Populated via JS -->
                         </select>
                     </div>
@@ -306,7 +305,7 @@
                                 <button type="button" onclick="addSelectedProductToOrder()" class="px-3 py-2 rounded-xl bg-hivis-neon text-slate-950 text-xs font-bold hover:bg-yellow-300 transition-all">
                                     + Agregar Producto
                                 </button>
-                                <button type="button" id="clearOrderBtn" onclick="clearAllOrderItems()" class="px-3 py-2 rounded-xl border border-slate-600 bg-slate-800 text-slate-200 text-[10px] font-bold hover:border-slate-500 transition-all hidden">
+                                <button type="button" id="clearOrderBtn" onclick="clearAllOrderItems()" class="px-3 py-2 rounded-xl border border-slate-600 bg-slate-800 text-slate-200 text-[10px] font-bold hover:border-slate-500 hidden">
                                     Limpiar Todo
                                 </button>
                             </div>
@@ -447,7 +446,7 @@
                 title: 'Playera Reflejante + Gafete',
                 category: 'Playera con reflejante y gafete',
                 badge: 'reflejante + Gafete',
-                image: 'images/yssr.jpg',
+                image: 'images/YSsR.jpg',
                 desc: 'Elegante y fresca. Cuello con botones y cintas reflejantes pecheras. Perfecta para supervisores y personal técnico.',
                 colors: [
                     { name: 'Verde', hex: '#22c55e' },
@@ -464,7 +463,7 @@
                 title: 'Sencilla',
                 category: 'Sencilla',
                 badge: 'Sencilla',
-                image: 'https://media.istockphoto.com/id/2297504318/photo/colorful-workwear-including-high-visibility-safety-vests-and-t-shirts-in-a-closet.jpg?s=612x612&w=is&k=20&c=7wACIH4Su6iNY_uAcy6ML6bsL3XF8ro3m-0EHHjgCF8=',
+                image: 'https://media.istockphoto.com/id/2297504318/photo/colorful-workwear-including-high-visibility-safety-vests-and-t-shirts-in-a-closet.jpg?s=612x612&w=is&k=20&c=7wACIH4Su6iNY_uAcywQ2kUoRyD4WmHc0Jc3S9f4J3E',
                 desc: 'Combina azul marino en zonas de roce (cuello e inferior) con neón reflejante superior para ocultar manchas de trabajo.',
                 colors: [
                     { name: 'Verde', hex: '#22c55e' },
@@ -481,7 +480,7 @@
                 title: 'Capucha - Pasamontañas',
                 category: 'Capucha - Pasamontañas',
                 badge: 'Capucha - Pasamontañas',
-                image: 'images/plscapr.jpg',             
+                image: 'images/PLSCapR.jpg',
                 desc: 'Tela duradera con dos bolsas en pecho con cartera. Cintas reflejantes cruzadas en espalda para máxima protección.',
                 colors: [
                     { name: 'Verde', hex: '#22c55e' },
@@ -498,7 +497,7 @@
                 title: 'Thermoadherible',
                 category: 'Thermoadherible',
                 badge: 'Thermoadherible',
-                image: 'images/womanad.jpg',
+                image: 'images/WomanAd.jpg',
                 desc: 'Microfibra transpirable de secado rápido. Diseñada especialmente para el clima húmedo y caluroso de Mérida.',
                 colors: [
                     { name: 'Verde', hex: '#22c55e' },
@@ -515,7 +514,7 @@
                 title: 'Polo',
                 category: 'Polo',
                 badge: 'Polo',
-                image: 'images/polorbir.jpg',
+                image: 'images/PoloRbiR.jpg',
                 desc: 'Chaleco de mallas ligeras sobrepuesto, cierre frontal y multi-bolsillo para identificación y plumas.',
                 colors: [
                     { name: 'Verde', hex: '#22c55e' },
@@ -532,7 +531,7 @@
                 title: '2 Colores Reflejante',
                 category: '2 Colores Reflejante',
                 badge: '2 Colores Reflejante',
-                image: 'images/obilsr.jpg',
+                image: 'images/OBiLSR.jpg',
                 desc: 'Chaleco de mallas ligeras sobrepuesto, cierre frontal y multi-bolsillo para identificación y plumas.',
                 colors: [
                     { name: 'Verde', hex: '#22c55e' },
@@ -589,7 +588,7 @@
                     </div>
 
                     <div class="p-5 pt-0">
-                        <button onclick="selectProductForOrder('${p.id}')" class="w-full py-2.5 bg-slate-800 hover:bg-hivis-neon hover:text-slate-950 text-white font-bold rounded-xl text-xs border border-slate-700 transition-all flex items-center justify-center gap-2">
+                        <button onclick="selectProductForOrder('${p.id}')" class="w-full py-2.5 bg-slate-800 hover:bg-hivis-neon hover:text-slate-950 text-white font-bold rounded-xl text-xs border border-slate-700 transition-all">
                             <i class="fa-solid fa-circle-plus">
                             </i> Seleccionar para Pedido
                         </button>
@@ -628,8 +627,6 @@
             const select = document.getElementById('modelSelect');
             select.value = modelId;
             updateFormModelDetails();
-            
-            // Scroll smoothly to order form
             document.getElementById('cotizador').scrollIntoView({ behavior: 'smooth' });
         }
 

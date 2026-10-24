@@ -411,6 +411,8 @@
 
     <!-- SCRIPTS -->
     <script>
+        const ADD_ON_PRODUCT_ID = 'MOD-HV201';
+
         // DATA: SHIRT CATALOG
         const products = [
             {
@@ -419,7 +421,7 @@
                 price: null,
                 category: 'Playera con reflejante',
                 badge: 'Reflejante',
-                image: 'images/YLSR.jpg',
+                image: 'images/NLSR.jpg',
                 desc: 'Manga larga fresca con doble cinta reflejante horizontal de 2 pulgadas en torso y brazos. Ideal para obras al aire libre.',
                 colors: [
                     { name: 'Verde', hex: '#22c55e' },
@@ -491,7 +493,7 @@
                 price: null,
                 category: 'Thermoadherible',
                 badge: 'Thermoadherible',
-                image: 'images/WomanAd.jpg',
+                image: 'images/YLSR.jpg',
                 desc: 'Microfibra transpirable de secado rápido. Diseñada especialmente para el clima húmedo y caluroso de Mérida.',
                 colors: [
                     { name: 'Verde', hex: '#22c55e' },
@@ -510,6 +512,7 @@
                 category: 'Polo',
                 badge: 'Polo',
                 image: 'images/PoloRbiR.jpg',
+                imageFit: 'contain',
                 desc: 'Chaleco de mallas ligeras sobrepuesto, cierre frontal y multi-bolsillo para identificación y plumas.',
                 colors: [
                     { name: 'Verde', hex: '#22c55e' },
@@ -528,6 +531,24 @@
                 category: '2 Colores Reflejante',
                 badge: '2 Colores Reflejante',
                 image: 'images/OBiLSR.jpg',
+                desc: 'Chaleco de mallas ligeras sobrepuesto, cierre frontal y multi-bolsillo para identificación y plumas.',
+                colors: [
+                    { name: 'Verde', hex: '#22c55e' },
+                    { name: 'Naranja', hex: '#f97316' },
+                    { name: 'Amarillo', hex: '#facc15' },
+                    { name: 'Rojo', hex: '#ef4444' },
+                    { name: 'Rosa', hex: '#ec4899' },
+                    { name: 'Personalizado / Escríbenos', hex: '#64748b' }
+                ],
+                sizes: ['M', 'L', 'XL', '2XL']
+            },
+            {
+                id: 'MOD-HV500',
+                title: '2 Colores con Thermoadherible',
+                price: null,
+                category: '2 Colores con Thermoadherible',
+                badge: '2 Colores con Thermoadherible',
+                image: 'images/YbiLSR.png',
                 desc: 'Chaleco de mallas ligeras sobrepuesto, cierre frontal y multi-bolsillo para identificación y plumas.',
                 colors: [
                     { name: 'Verde', hex: '#22c55e' },
@@ -670,11 +691,13 @@
             filtered.forEach(p => {
                 const card = document.createElement('div');
                 card.className = 'bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-slate-700 transition-all hover:shadow-xl group';
+                const imageFit = p.imageFit === 'contain' ? 'object-contain' : 'object-cover';
+                const imageHover = p.imageFit === 'contain' ? '' : 'group-hover:scale-105';
                 
                 card.innerHTML = `
                     <div>
                         <div class="relative h-52 overflow-hidden bg-slate-800">
-                            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-90" onerror="this.src='https://placehold.co/600x400/1e293b/CCFF00?text=${p.id}'">
+                            <img src="${p.image}" alt="${p.title}" class="w-full h-full ${imageFit} ${imageHover} transition-transform duration-300 opacity-90" onerror="this.src='https://placehold.co/600x400/1e293b/CCFF00?text=${p.id}'">
                             <span class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-md text-hivis-neon text-[10px] font-bold px-2.5 py-1 rounded-full border border-hivis-neon/30">
                                 ${p.id}
                             </span>
@@ -701,7 +724,7 @@
                     <div class="p-5 pt-0">
                         <button onclick="selectProductForOrder('${p.id}')" class="w-full py-2.5 bg-slate-800 hover:bg-hivis-neon hover:text-slate-950 text-white font-bold rounded-xl text-xs border border-slate-700 transition-all">
                             <i class="fa-solid fa-circle-plus">
-                            </i> Seleccionar para Pedido
+                            </i> ${p.id === ADD_ON_PRODUCT_ID ? 'Agregar como extra' : 'Seleccionar para Pedido'}
                         </button>
                     </div>
                 `;
@@ -725,7 +748,7 @@
         function populateModelSelect() {
             const select = document.getElementById('modelSelect');
             select.innerHTML = '';
-            products.forEach(p => {
+            products.filter(p => p.id !== ADD_ON_PRODUCT_ID).forEach(p => {
                 const opt = document.createElement('option');
                 opt.value = p.id;
                 opt.textContent = `${p.id} - ${p.title}`;
@@ -735,6 +758,12 @@
 
         // WHEN USER CLICKS "SELECCIONAR PARA PEDIDO"
         function selectProductForOrder(modelId) {
+            if (modelId === ADD_ON_PRODUCT_ID) {
+                document.getElementById('extraCapucha').checked = true;
+                document.getElementById('cotizador').scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
             const select = document.getElementById('modelSelect');
             select.value = modelId;
             updateFormModelDetails();
